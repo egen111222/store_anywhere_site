@@ -1,0 +1,29 @@
+{%extends 'layout.html'%}
+
+{%block content %}
+
+<div class="container shadow border p-5 text-center mt-5">
+
+	<div class="row row-cols-2">
+		
+
+		<div class="col">
+			<img src="/{{item.img}}" class="img-thumbnail">
+		</div>
+
+		<div class="col">
+				<h1>{{item.name}}</h1>
+				<p>{{item.description}}</p>
+				<h3>Ціна товару : {{item.price}}</h3>
+				<hr>
+
+				<a href="{{url_for('cart_app.add_to_cart',item_number=item.id)}}"><button class="btn btn-primary p-3 mt-5"><h4>Додати до кошика</h4></button></a>
+		</div>
+	</div>
+
+	
+
+
+</div>
+
+{%endblock%}

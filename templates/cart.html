@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{%block content%}
+
+<div class="container mt-5 shadow p-5 text-center">
+
+	{% if cart.get_count() %}
+	<div class="p-3 shadow rounded border mb-3">
+		<h2>Кількість товарів: {{cart.get_count()}}</h2>
+		<p>Ціна товарів {{cart.get_price()}}</p>
+	</div>
+
+	<div class="p-3 shadow rounded border">
+		<h2>Придбані товари</h2>
+
+
+		<ol class="list-group list-group-numbered">
+		{%for item in cart.items%}
+		  <li class="list-group-item d-flex justify-content-between align-items-start">
+		    <div class="ms-2 me-auto">
+		      <div class="fw-bold">{{item.name}}</div>
+		      Ціна: {{item.price}}
+		    </div>
+		    <!-- <span class="badge bg-primary rounded-pill"></span> -->
+		  </li>
+		{%endfor%}
+		</ol>
+
+	</div>
+
+
+	<div class="p-3 shadow rounded border mt-3">
+		<a href="{{url_for('cart_app.clear_cart')}}"><button class="btn btn-danger">Очистити корзину</button></a>
+		<a href="{{url_for('store_app.create_order')}}"><button class="btn btn-info">Оформити замовлення</button></a>
+	</div>
+
+	{%else%}
+	<div class="p-5 shadow rounded border mt-5 text-center container">
+		<h1 class="display-3">Корзина порожня</h1>
+	</div>
+	{%endif%}
+
+
+
+
+</div>
+
+
+{%endblock%}
