@@ -14,7 +14,7 @@ from mail_lib import send_mail
 store_app = Blueprint('store_app',__name__,
                       template_folder='templates')
 
-@store_app.route("/items")
+@store_app.route("/")
 def view_items():
     items = db.paginate(Item.query,per_page=16)
     return render_template("items.html",
